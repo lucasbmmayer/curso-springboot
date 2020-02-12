@@ -24,7 +24,8 @@ public class OrderResource {
 		return ResponseEntity.ok().body(orderService.findAll());
 	}
 	
-	public ResponseEntity<Optional<Order>> findById(Long id) {
+	@GetMapping(value = "/{id}")
+	public ResponseEntity<Order> findById(Long id) {
 		return ResponseEntity.ok().body(orderService.findById(id));
 	}
 }
