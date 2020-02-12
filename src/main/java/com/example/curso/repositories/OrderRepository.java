@@ -1,10 +1,9 @@
 package com.example.curso.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import com.example.curso.entities.User;
+import com.example.curso.entities.Order;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface OrderRepository extends JpaRepository<Order, Long>  {
 
 }
