@@ -10,10 +10,12 @@ import org.springframework.context.annotation.Profile;
 
 import com.example.curso.entities.Category;
 import com.example.curso.entities.Order;
+import com.example.curso.entities.OrderItem;
 import com.example.curso.entities.Product;
 import com.example.curso.entities.User;
 import com.example.curso.entities.enums.OrderStatus;
 import com.example.curso.repositories.CategoryRepository;
+import com.example.curso.repositories.OrderItemRepository;
 import com.example.curso.repositories.OrderRepository;
 import com.example.curso.repositories.ProductRepository;
 import com.example.curso.repositories.UserRepository;
@@ -33,6 +35,9 @@ public class ConfigTest implements CommandLineRunner {
 	
 	@Autowired
 	private ProductRepository productRepository;
+	
+	@Autowired
+	private OrderItemRepository orderItemRepository;
 	
 	@Override
 	public void run(String... args) throws Exception {
@@ -65,6 +70,13 @@ public class ConfigTest implements CommandLineRunner {
 		
 		productRepository.saveAll(Arrays.asList(
 			p1,p2,p3,p4,p5
+		));
+		
+		orderItemRepository.saveAll(Arrays.asList(
+			new OrderItem(orderRepository.findById(1L).get(), p1, 2, p1.getPrice()),
+			new OrderItem(orderRepository.findById(1L).get(), p3, 1, p3.getPrice()),
+			new OrderItem(orderRepository.findById(2L).get(), p3, 2, p3.getPrice()),
+			new OrderItem(orderRepository.findById(3L).get(), p5, 2, p5.getPrice())
 		));
 	}
 }
